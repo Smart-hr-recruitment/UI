@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
-import { OAuthSettings } from 'src/oauth';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit{
   apiResponse: string;
 
   constructor(private msalService: MsalService, private httpCLient: HttpClient) {
-    
+
   }
   ngOnInit(): void {
     this.msalService.instance.handleRedirectPromise().then( res => {
@@ -40,7 +39,7 @@ export class AppComponent implements OnInit{
   logout() {
     this.msalService.logout();
   }
-  
+
   getName(): string {
     if(this.msalService.instance.getActiveAccount() == null) {
       return 'Unknown';
